@@ -13,9 +13,10 @@ services:
     image: "cyberfly/cyberfly_node:latest"
     restart: always
     ports:
-      - "31001:31001" #libp2p tcp port
-      - "31002:31002" #libp2p websocket port
+      - "31001:31001" #quin port
+      - "31002:31002"
       - "31003:31003" #Cyberfly api port
+      - "31006:31006" #relay port
     volumes:
       - ./data:/usr/src/app/data
     environment:
@@ -25,7 +26,6 @@ services:
       - REDIS_HOST=redisstackserver
     depends_on:
       - cyberflymqtt
-      - redisstackserver
 
   cyberflymqtt:
     image: "cyberfly/cyberfly_mqtt:latest"
@@ -33,12 +33,6 @@ services:
     ports:
       - "31004:1883" #mqtt tcp port
       - "31005:9001" #mqtt websocket port
-  
-  redisstackserver:
-    image: "redis:8.0-M02-alpine3.20"
-    restart: always
-    volumes:
-      - ./redis-data:/data
   
   watchtower:
     image: "containrrr/watchtower"
