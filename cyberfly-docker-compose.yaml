@@ -13,7 +13,8 @@ services:
     image: "cyberfly/cyberfly_node:latest"
     restart: always
     ports:
-      - "31001:31001" #quin port
+      - "31001:31001/udp" #quin port
+      - "31001:31001/tcp" #quin port
       - "31002:31002"
       - "31003:31003" #Cyberfly api port
       - "31006:31006" #relay port
@@ -23,7 +24,6 @@ services:
       - KADENA_ACCOUNT=k:your_kadena_address
       - NODE_PRIV_KEY=your_node_private_key
       - MQTT_HOST=mqtt://cyberflymqtt
-      - REDIS_HOST=redisstackserver
     depends_on:
       - cyberflymqtt
 
