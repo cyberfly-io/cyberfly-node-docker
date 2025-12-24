@@ -24,6 +24,8 @@ services:
       - KADENA_ACCOUNT=k:your_kadena_address
       - NODE_PRIV_KEY=your_node_private_key
       - MQTT_HOST=mqtt://cyberflymqtt
+    security_opt:
+      - seccomp=unconfined
     depends_on:
       - cyberflymqtt
 
