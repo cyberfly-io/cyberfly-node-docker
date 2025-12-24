@@ -19,7 +19,7 @@ services:
       - "31003:31003" #Cyberfly api port
       - "31006:31006" #relay port
     volumes:
-      - ./data:/usr/src/app/data
+      - ./data:/app/data
     environment:
       - KADENA_ACCOUNT=k:your_kadena_address
       - NODE_PRIV_KEY=your_node_private_key
